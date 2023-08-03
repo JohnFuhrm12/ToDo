@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    align-items: center;
+}
+
+html, body {
+	max-height: 100%;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
