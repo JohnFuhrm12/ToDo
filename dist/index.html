@@ -21,14 +21,31 @@
       <div id="todoContainer">
 
       </div>
-      <div class="modal">
+      <div id="projectModal" class="modal">
         <div class="modal-content">
           <span class="close-btn">&times;</span>
           <h2 class="modalTitle">New Project</h2>
-          <form id="newProjectsForm">
+          <form class="form">
             <label class="modalLabel" for="projectName">Name:</label>
             <input type="text" name="projectName" class="modalInput" id="projectNameInput" required>
-            <button id="addProjectsBtn">Add Project</button>
+            <button class="addBtn" id="addProjectsBtn">Add Project</button>
+          </form>
+        </div>
+      </div>
+      <div id="todoModal" class="modal">
+        <div id="todoModalContent" class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2 class="modalTitle">New Todo</h2>
+          <form id="todoForm" class="form">
+            <label class="modalLabel" for="todoTitle">Title:</label>
+            <input type="text" name="todoTitle" class="modalInput" id="todoTitleInput" required>
+            <label class="modalLabel" for="todoDescription">Description:</label>
+            <textarea type="text" name="todoDescription" class="modalInput" id="todoDescriptionTextarea" required></textarea>
+            <label class="modalLabel" for="todoDueDate">Due Date:</label>
+            <input type="text" name="todoDueDate" class="modalInput" id="todoDueDateInput" required>
+            <label class="modalLabel" for="todoPiority">Piority:</label>
+            <input type="text" name="todoPiority" class="modalInput" id="todoPiorityInput" required>
+            <button class="addBtn" id="addTodoBtn">Add Todo</button>
           </form>
         </div>
       </div>

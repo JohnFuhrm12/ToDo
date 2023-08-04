@@ -42,7 +42,7 @@ window.onload = function() {
     });
 
     // Open Modal
-    const modal = document.querySelector(".modal");
+    const modal = document.getElementById("projectModal");
 
     const openAddProjectsModalBtn = document.getElementById('openAddProjectsModalBtn');
     openAddProjectsModalBtn.addEventListener('click', function() {
