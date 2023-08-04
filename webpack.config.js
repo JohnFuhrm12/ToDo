@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
   entry: {
     index: './src/index.js',
-    inbox: './src/inbox.js'
+    inbox: './src/inbox.js',
+    project: './src/project.js'
   },
   devtool: 'inline-source-map',
   output: {

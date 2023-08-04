@@ -1,3 +1,5 @@
+import { loadProject } from "./project";
+
 const loadInbox = (allProjects) => {
     const todoContainer = document.getElementById('todoContainer');
     const sideBar = document.getElementById('sideBar');
@@ -27,6 +29,11 @@ const loadInbox = (allProjects) => {
             projectObject.innerText = project.title;
             projectObject.className = 'projectListing';
             sideBar.appendChild(projectObject);
+
+            projectObject.addEventListener('click', function() {
+                console.log('openedProject');
+                loadProject(project.title);
+            });
         });
     };
 };
