@@ -11,13 +11,24 @@
     </div>
     <div id="content">
       <div id="sideBar">
-        <h2 class="sideBarTitle">Inbox</h2>
-        <h2 class="sideBarTitle">Today</h2>
+        <h2 class="sideBarTitle" id="inboxBtn">Inbox</h2>
+        <h2 class="sideBarTitle" id="todayBtn">Today</h2>
         <h2 class="sideBarTitle" id="projectsTitle">Projects</h2>
-        <h2 class="sideBarTitle">Add Project</h2>
+        <h2 class="sideBarTitle" id="openAddProjectsModalBtn">Add Project</h2>
       </div>
       <div id="todoContainer">
-        
+
+      </div>
+      <div class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2 class="modalTitle">New Project</h2>
+          <form id="newProjectsForm">
+            <label class="modalLabel" for="projectName">Name:</label>
+            <input type="text" name="projectName" class="modalInput" id="projectNameInput" required>
+            <button id="addProjectsBtn">Add Project</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>
