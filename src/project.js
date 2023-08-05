@@ -1,5 +1,6 @@
+const allTodos = [];
+
 const loadProject = (projectName) => {
-    const allTodos = [];
 
     class Todo{
         constructor(title, description, dueDate, priority, status, project) {
@@ -15,54 +16,112 @@ const loadProject = (projectName) => {
     const todoContainer = document.getElementById('todoContainer');
     todoContainer.innerHTML = '';
 
+    console.log(allTodos);
+
     // Create Title
-    const titleCheck = document.getElementById('projectTitle');
+    function createTitle() {
+        const titleCheck = document.getElementById('projectTitle');
 
-    if (!titleCheck) {
-        const projectTitle = document.createElement('h1'); 
-        projectTitle.innerText = projectName;
-        projectTitle.className = 'contentTitle';
-        projectTitle.id = 'projectTitle';
-        todoContainer.appendChild(projectTitle);
-    };
-
-    // Load All Todos For This Project
-    if (allTodos) {
-        allTodos.forEach((todo) => {
-            if (todo.project === projectName) {
-                const todo = document.createElement('h2'); 
-                todo.innerText = todo.title;
-                todo.className = 'todo';
-                todoContainer.appendChild(todo);
-            };
-        });
-    };
-
-    // Create Todos
-
-    // Open Todo Modal
-    const addTodosBtn = document.createElement('button'); 
-    addTodosBtn.innerText = 'Add Task';
-    addTodosBtn.className = 'AddTodosBtn';
-    todoContainer.appendChild(addTodosBtn);
-
-    const modal = document.getElementById("todoModal");
-
-    addTodosBtn.addEventListener('click', function() {
-        console.log('Open Add Todo Modal');
-        modal.style.display = "block";
-    });
-
-    const closeBtn = document.querySelector(".close-btn");
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = "none";
-    });
-
-    window.onclick = function(e){
-        if(e.target == modal){
-          modal.style.display = "none";
+        if (!titleCheck) {
+            const projectTitle = document.createElement('h1'); 
+            projectTitle.innerText = projectName;
+            projectTitle.className = 'contentTitle';
+            projectTitle.id = 'projectTitle';
+            todoContainer.appendChild(projectTitle);
         };
     };
+
+    createTitle();
+
+    // Load All Todos For This Project
+    function loadTodos() {
+        console.log('loading todos');
+        todoContainer.innerHTML = '';
+        createTitle();
+
+        if (allTodos) {
+            allTodos.forEach((todo) => {
+                let todoText = todo.title;
+                let todoDueDate = todo.dueDate;
+
+                if (todo.project === projectName) {
+                    const todo = document.createElement('div'); 
+                    todo.className = 'todo';
+                    todoContainer.appendChild(todo);
+
+                    const todoTitle = document.createElement('h2'); 
+                    todoTitle.innerText = todoText;
+                    todoTitle.className = 'todoTitle';
+                    todo.appendChild(todoTitle);
+
+                    const todoDueDateText = document.createElement('h2'); 
+                    todoDueDateText.innerText = todoDueDate;
+                    todoDueDateText.className = 'todoDate';
+                    todo.appendChild(todoDueDateText);
+                };
+            });
+        };
+    };
+    
+    loadTodos();
+
+    // Open Todo Modal
+    function createOpenModalBtn() {
+        const addTodosBtn = document.createElement('button'); 
+        addTodosBtn.innerText = 'Add Task';
+        addTodosBtn.className = 'AddTodosBtn';
+        todoContainer.appendChild(addTodosBtn);
+    
+        const modal = document.getElementById("todoModal");
+    
+        addTodosBtn.addEventListener('click', function() {
+            console.log('Open Add Todo Modal');
+            modal.style.display = "block";
+        });
+    
+        const closeBtn = document.querySelector(".close-btn");
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+    
+        window.onclick = function(e){
+            if(e.target == modal){
+              modal.style.display = "none";
+            };
+        };
+    };
+
+    createOpenModalBtn();
+
+    // Create Todos
+    function addTodo(title, description, dueDate, priority) {
+        console.log('todo created');
+        document.getElementById('todoTitleInput').value = '';
+        document.getElementById('todoDescriptionTextarea').value = '';
+        document.getElementById('todoDueDateInput').value = '';
+        document.getElementById('todoPiorityInput').value = '';
+
+        let status = false;
+        let project = projectName;
+        let newTodo = new Todo(title, description, dueDate, priority, status, project);
+        allTodos.push(newTodo);
+        loadTodos();
+        createOpenModalBtn();
+        console.log(allTodos);
+    };
+
+    const addTodoBtn = document.getElementById('addTodoBtn');
+
+    addTodoBtn.addEventListener('click', function() {
+        let titleValue = document.getElementById('todoTitleInput').value;
+        let descriptionValue = document.getElementById('todoDescriptionTextarea').value;
+        let dueDateValue = document.getElementById('todoDueDateInput').value;
+        let priorityValue = document.getElementById('todoPiorityInput').value;
+
+        if (titleValue !== '' && descriptionValue !== '' && dueDateValue !== '' && priorityValue !== '') {
+            addTodo(titleValue, descriptionValue, dueDateValue, priorityValue);
+        };
+    });
 
 };
 

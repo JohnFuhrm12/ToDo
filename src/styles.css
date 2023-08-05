@@ -63,6 +63,10 @@ html, body {
     cursor: auto;
 }
 
+#todoContainer {
+    width: 100%;
+}
+
 /* Modal */
 
 .modal {
@@ -166,3 +170,29 @@ html, body {
   #todoModalContent {
     width: 50%;
   }
+
+/* Container */
+
+.contentTitle {
+    margin-top: 40px;
+    margin-left: 0px;
+    width: 200px;
+}
+
+.todo {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-bottom: solid 3px black;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.todoTitle {
+
+}
+
+.todoDate {
+
+}
