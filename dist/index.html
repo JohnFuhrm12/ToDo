@@ -42,9 +42,14 @@
             <label class="modalLabel" for="todoDescription">Description:</label>
             <textarea type="text" name="todoDescription" class="modalInput" id="todoDescriptionTextarea" required></textarea>
             <label class="modalLabel" for="todoDueDate">Due Date:</label>
-            <input type="text" name="todoDueDate" class="modalInput" id="todoDueDateInput" required>
+            <input type="date" name="todoDueDate" class="modalInput" id="todoDueDateInput" required>
             <label class="modalLabel" for="todoPiority">Piority:</label>
-            <input type="text" name="todoPiority" class="modalInput" id="todoPiorityInput" required>
+            <select class="modalInput" name="todoPiority" id="todoPiorityInput" required>
+              <option value="">None</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
             <button class="addBtn" id="addTodoBtn">Add Todo</button>
           </form>
         </div>

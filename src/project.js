@@ -46,10 +46,30 @@ const loadProject = (projectName) => {
                     todo.className = 'todo';
                     todoContainer.appendChild(todo);
 
+                    const leftContainer = document.createElement('div'); 
+                    leftContainer.className = 'leftContainer';
+                    todo.appendChild(leftContainer);
+
+                    const checkbox = document.createElement('input'); 
+                    checkbox.className = 'todoCheckbox';
+                    checkbox.type = 'checkbox';
+                    checkbox.id = todoText;
+                    leftContainer.appendChild(checkbox);
+
+                    checkbox.addEventListener('click', function(event) {
+                        allTodos.forEach((item) => {
+                            if (item.title === checkbox.id) {
+                                let index = allTodos.indexOf(item);
+                                allTodos.splice(index, 1);
+                                todo.remove();
+                            };
+                        });
+                    });
+
                     const todoTitle = document.createElement('h2'); 
                     todoTitle.innerText = todoText;
                     todoTitle.className = 'todoTitle';
-                    todo.appendChild(todoTitle);
+                    leftContainer.appendChild(todoTitle);
 
                     const todoDueDateText = document.createElement('h2'); 
                     todoDueDateText.innerText = todoDueDate;

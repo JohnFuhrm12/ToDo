@@ -206,8 +206,12 @@ html, body {
     margin: 0 auto;
 }
 
-.todoTitle {
+.todo:hover {
+cursor: pointer;
+}
 
+.todoTitle {
+    margin-left: 20px;
 }
 
 .todoDate {
@@ -231,4 +235,13 @@ html, body {
     transition: 0.5s;
     background-color: black;
     color: white;
+  }
+
+  .leftContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .todoCheckbox:hover {
+    cursor: pointer;
   }
