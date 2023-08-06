@@ -54,6 +54,28 @@
           </form>
         </div>
       </div>
+      <div id="todoModalEdit" class="modal">
+        <div id="todoModalContentEdit" class="modal-content">
+          <span id="closeEdit" class="close-btn">&times;</span>
+          <h2 class="modalTitle">Edit Todo</h2>
+          <form id="todoFormEdit" class="form">
+            <label class="modalLabel" for="todoTitle">Title:</label>
+            <input type="text" name="todoTitle" class="modalInput" id="todoTitleInputEdit" required>
+            <label class="modalLabel" for="todoDescription">Description:</label>
+            <textarea type="text" name="todoDescription" class="modalInput" id="todoDescriptionTextareaEdit" required></textarea>
+            <label class="modalLabel" for="todoDueDate">Due Date:</label>
+            <input type="date" name="todoDueDate" class="modalInput" id="todoDueDateInputEdit" required>
+            <label class="modalLabel" for="todoPiority">Piority:</label>
+            <select class="modalInput" name="todoPiority" id="todoPiorityInputEdit" required>
+              <option value="">None</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+            <button class="addBtn" id="addTodoBtnEdit">Edit Todo</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

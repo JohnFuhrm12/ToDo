@@ -107,6 +107,58 @@ const loadProject = (projectName) => {
                     todoPriorityDisplay.className = 'todoDisplayItem';
                     displayBox.appendChild(todoPriorityDisplay);
 
+                    const displayEditBtn = document.createElement('button'); 
+                    displayEditBtn.innerText = 'Edit';
+                    displayEditBtn.className = 'addBtn';
+                    displayBox.appendChild(displayEditBtn);
+
+                    displayEditBtn.addEventListener('click', function() {
+                        const editModal = document.getElementById('todoModalEdit');
+                        editModal.style.display = "block";
+
+                        window.onclick = function(e){
+                            if(e.target == editModal){
+                                editModal.style.display = "none";
+                            };
+                        };
+
+                        const titleInput = document.getElementById('todoTitleInputEdit');
+                        const descInput = document.getElementById('todoDescriptionTextareaEdit');
+                        const dateInput = document.getElementById('todoDueDateInputEdit');
+                        const priorityInput = document.getElementById('todoPiorityInputEdit');
+
+                        titleInput.value = todoText;
+                        descInput.value = todoDesc;
+                        dateInput.value = todoDueDate;
+                        priorityInput.value = todoPriority;
+
+                        const editBtn = document.getElementById('addTodoBtnEdit');
+
+                        editBtn.addEventListener('click', function() {
+                            event.preventDefault();
+                            allTodos.forEach((item) => {
+                                if (item.title === checkbox.id) {
+                                    let index = allTodos.indexOf(item);
+
+                                    let titleValue = document.getElementById('todoTitleInputEdit').value;
+                                    let descriptionValue = document.getElementById('todoDescriptionTextareaEdit').value;
+                                    let dueDateValue = document.getElementById('todoDueDateInputEdit').value;
+                                    let priorityValue = document.getElementById('todoPiorityInputEdit').value;
+
+                                    allTodos[index].title = titleValue;
+                                    allTodos[index].description = descriptionValue;
+                                    allTodos[index].dueDate = dueDateValue;
+                                    allTodos[index].priority = priorityValue;
+
+                                    const editModal = document.getElementById('todoModalEdit');
+                                    editModal.style.display = "none";
+                                    loadTodos();
+                                };
+                            });
+                        });
+
+                    });
+
                     todo.addEventListener('click' , function() {
                         let displayed = displayBox.style.display;
 
@@ -208,6 +260,15 @@ const loadProject = (projectName) => {
     };
 
     createTodoBtn();
+
+    // Edit Modal
+    const editModal = document.getElementById('todoModalEdit');
+
+    const closeBtnEdit = document.getElementById("closeEdit");
+    closeBtnEdit.addEventListener('click', function() {
+            editModal.style.display = "none";
+        });
+
 
 };
 
