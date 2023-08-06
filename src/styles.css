@@ -245,3 +245,16 @@ cursor: pointer;
   .todoCheckbox:hover {
     cursor: pointer;
   }
+
+  .displayBox {
+    border: solid 3px black;
+    padding: 5px;
+    border-radius: 15px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .todoDisplayItem {
+    font-size: 20px;
+  }

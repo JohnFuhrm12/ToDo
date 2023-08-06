@@ -40,11 +40,17 @@ const loadProject = (projectName) => {
             allTodos.forEach((todo) => {
                 let todoText = todo.title;
                 let todoDueDate = todo.dueDate;
+                let todoDesc = todo.description;
+                let todoPriority = todo.priority;
 
                 if (todo.project === projectName) {
+                    const todoWrapper = document.createElement('div');
+                    todoWrapper.className = 'todoWrapper' ;
+                    todoContainer.appendChild(todoWrapper);
+
                     const todo = document.createElement('div'); 
                     todo.className = 'todo';
-                    todoContainer.appendChild(todo);
+                    todoWrapper.appendChild(todo);
 
                     const leftContainer = document.createElement('div'); 
                     leftContainer.className = 'leftContainer';
@@ -56,7 +62,7 @@ const loadProject = (projectName) => {
                     checkbox.id = todoText;
                     leftContainer.appendChild(checkbox);
 
-                    checkbox.addEventListener('click', function(event) {
+                    checkbox.addEventListener('click', function() {
                         allTodos.forEach((item) => {
                             if (item.title === checkbox.id) {
                                 let index = allTodos.indexOf(item);
@@ -75,6 +81,41 @@ const loadProject = (projectName) => {
                     todoDueDateText.innerText = todoDueDate;
                     todoDueDateText.className = 'todoDate';
                     todo.appendChild(todoDueDateText);
+
+                    const displayBox = document.createElement('div'); 
+                    displayBox.className = 'displayBox';
+                    displayBox.style.display = 'none';
+                    todoWrapper.appendChild(displayBox);
+
+                    const todoTitleDisplay = document.createElement('h2'); 
+                    todoTitleDisplay.innerText = 'Title: ' + todoText;
+                    todoTitleDisplay.className = 'todoDisplayItem';
+                    displayBox.appendChild(todoTitleDisplay);
+
+                    const todoDateDisplay = document.createElement('h2'); 
+                    todoDateDisplay.innerText = 'Due Date: ' + todoDueDate;
+                    todoDateDisplay.className = 'todoDisplayItem';
+                    displayBox.appendChild(todoDateDisplay);
+
+                    const todoDescDisplay = document.createElement('h2'); 
+                    todoDescDisplay.innerText = 'Description: ' + todoDesc;
+                    todoDescDisplay.className = 'todoDisplayItem';
+                    displayBox.appendChild(todoDescDisplay);
+
+                    const todoPriorityDisplay = document.createElement('h2'); 
+                    todoPriorityDisplay.innerText = 'Priority: ' + todoPriority;
+                    todoPriorityDisplay.className = 'todoDisplayItem';
+                    displayBox.appendChild(todoPriorityDisplay);
+
+                    todo.addEventListener('click' , function() {
+                        let displayed = displayBox.style.display;
+
+                        if (displayed === 'none'){
+                            displayBox.style.display = 'block';
+                        } else {
+                            displayBox.style.display = 'none';
+                        };
+                    });
                 };
             });
         };
