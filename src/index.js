@@ -2,7 +2,7 @@ import { loadInbox } from './inbox';
 import './styles.css';
 
 const allTodos = [];
-const allProjects = [];
+let allProjects = [];
 
 class Todo{
     constructor(title, description, dueDate, priority, status) {
@@ -65,6 +65,18 @@ window.onload = function() {
         let nameValue = document.getElementById('projectNameInput').value;
         if (nameValue !== '') {
             addProject(nameValue);
+
+            sessionStorage.setItem('projects', JSON.stringify(allProjects));
+            loadInbox(allProjects);
         };
     });
+
+    // Get Projects from LocalStorage
+    const localProjects = JSON.parse(sessionStorage.getItem('projects'));
+    console.log(localProjects);
+
+    if(localProjects !== null) {
+        allProjects = localProjects;
+    };
+    loadInbox(allProjects);
 };
