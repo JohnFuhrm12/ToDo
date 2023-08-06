@@ -214,10 +214,6 @@ cursor: pointer;
     margin-left: 20px;
 }
 
-.todoDate {
-
-}
-
 .AddTodosBtn {
     width: 10%;
     font-size: 18px;
@@ -257,4 +253,29 @@ cursor: pointer;
 
   .todoDisplayItem {
     font-size: 20px;
+  }
+
+  .editBtn {
+    width: 20%;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: 0.5s;
+  }
+
+  .editBtn:hover {
+    transition: 0.5s;
+    background-color: black;
+    color: white;
+  }
+
+  #todoModalEdit {
+    padding-top: 50px;
+  }
+
+  #todoModalContentEdit {
+    width: 50%;
   }

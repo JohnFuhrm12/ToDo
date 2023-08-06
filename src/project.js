@@ -109,7 +109,7 @@ const loadProject = (projectName) => {
 
                     const displayEditBtn = document.createElement('button'); 
                     displayEditBtn.innerText = 'Edit';
-                    displayEditBtn.className = 'addBtn';
+                    displayEditBtn.className = 'editBtn';
                     displayBox.appendChild(displayEditBtn);
 
                     displayEditBtn.addEventListener('click', function() {
