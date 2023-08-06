@@ -1,6 +1,6 @@
-const allTodos = [];
+const loadProject = (projectName, todos) => {
 
-const loadProject = (projectName) => {
+    let allTodos = todos;
 
     class Todo{
         constructor(title, description, dueDate, priority, status, project) {
@@ -214,6 +214,11 @@ const loadProject = (projectName) => {
         let status = false;
         let newTodo = new Todo(title, description, dueDate, priority, status, project);
         allTodos.push(newTodo);
+
+        sessionStorage.setItem('todos', JSON.stringify(allTodos));
+        const localTodos = JSON.parse(sessionStorage.getItem('todos'));
+        console.log(localTodos);
+
         loadTodos();
         createOpenModalBtn();
     };

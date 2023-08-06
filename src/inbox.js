@@ -3,6 +3,16 @@ import { loadProject } from "./project";
 const loadInbox = (allProjects) => {
     const todoContainer = document.getElementById('todoContainer');
     const sideBar = document.getElementById('sideBar');
+
+    let allTodos = [];
+    
+    // Get Todos from LocalStorage
+    const localTodos = JSON.parse(sessionStorage.getItem('todos'));
+    console.log(localTodos);
+
+    if(localTodos !== null) {
+        allTodos = localTodos;
+    };
     
     // Create Title
     const titleCheck = document.getElementById('inboxTitle');
@@ -31,7 +41,7 @@ const loadInbox = (allProjects) => {
             sideBar.appendChild(projectObject);
 
             projectObject.addEventListener('click', function() {
-                loadProject(project.title);
+                loadProject(project.title, allTodos);
             });
         });
     };
