@@ -36,7 +36,6 @@ window.onload = function() {
 
     const inboxTab = document.getElementById('inboxBtn');
     inboxTab.addEventListener('click', function() {
-        console.log('loaded inbox');
         todoContainer.innerHTML = '';
         loadInbox(allProjects);
     });

@@ -6,8 +6,9 @@ const loadInbox = (allProjects) => {
     
     // Create Title
     const titleCheck = document.getElementById('inboxTitle');
+    const projectCheck = document.getElementById('projectTitle');
 
-    if (!titleCheck) {
+    if (!titleCheck && !projectCheck) {
         const inboxTitle = document.createElement('h1'); 
         inboxTitle.innerText = 'Inbox';
         inboxTitle.className = 'contentTitle';
@@ -16,7 +17,6 @@ const loadInbox = (allProjects) => {
     };
 
     // Create All Todos (Title-Duedate-Priority)
-    console.log(allProjects);
     let currentProjects = document.getElementsByClassName('projectListing');
     if (currentProjects) {
         while(currentProjects[0]) {
@@ -31,7 +31,6 @@ const loadInbox = (allProjects) => {
             sideBar.appendChild(projectObject);
 
             projectObject.addEventListener('click', function() {
-                console.log('openedProject');
                 loadProject(project.title);
             });
         });

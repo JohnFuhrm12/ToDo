@@ -16,8 +16,6 @@ const loadProject = (projectName) => {
     const todoContainer = document.getElementById('todoContainer');
     todoContainer.innerHTML = '';
 
-    console.log(allTodos);
-
     // Create Title
     function createTitle() {
         const titleCheck = document.getElementById('projectTitle');
@@ -35,7 +33,6 @@ const loadProject = (projectName) => {
 
     // Load All Todos For This Project
     function loadTodos() {
-        console.log('loading todos');
         todoContainer.innerHTML = '';
         createTitle();
 
@@ -94,7 +91,7 @@ const loadProject = (projectName) => {
     createOpenModalBtn();
 
     // Create Todos
-    function addTodo(title, description, dueDate, priority) {
+    function addTodo(title, description, dueDate, priority, project) {
         console.log('todo created');
         document.getElementById('todoTitleInput').value = '';
         document.getElementById('todoDescriptionTextarea').value = '';
@@ -102,12 +99,10 @@ const loadProject = (projectName) => {
         document.getElementById('todoPiorityInput').value = '';
 
         let status = false;
-        let project = projectName;
         let newTodo = new Todo(title, description, dueDate, priority, status, project);
         allTodos.push(newTodo);
         loadTodos();
         createOpenModalBtn();
-        console.log(allTodos);
     };
 
     const addTodoBtn = document.getElementById('addTodoBtn');
@@ -117,11 +112,41 @@ const loadProject = (projectName) => {
         let descriptionValue = document.getElementById('todoDescriptionTextarea').value;
         let dueDateValue = document.getElementById('todoDueDateInput').value;
         let priorityValue = document.getElementById('todoPiorityInput').value;
+        let project = projectName;
 
         if (titleValue !== '' && descriptionValue !== '' && dueDateValue !== '' && priorityValue !== '') {
-            addTodo(titleValue, descriptionValue, dueDateValue, priorityValue);
+            addTodo(titleValue, descriptionValue, dueDateValue, priorityValue, project);
         };
     });
+
+    function createTodoBtn() {
+        const addTodoBtnOld = document.getElementById('addTodoBtn');
+        if (addTodoBtnOld) {
+            addTodoBtnOld.remove();
+        };
+
+        const form = document.getElementById('todoForm');
+
+        const addTodoBtn = document.createElement('button');
+        addTodoBtn.id = 'addTodoBtn';
+        addTodoBtn.className = 'addBtn';
+        addTodoBtn.innerText = 'Add Todo'
+        form.appendChild(addTodoBtn);
+
+        addTodoBtn.addEventListener('click', function() {
+            let titleValue = document.getElementById('todoTitleInput').value;
+            let descriptionValue = document.getElementById('todoDescriptionTextarea').value;
+            let dueDateValue = document.getElementById('todoDueDateInput').value;
+            let priorityValue = document.getElementById('todoPiorityInput').value;
+            let project = projectName;
+
+            if (titleValue !== '' && descriptionValue !== '' && dueDateValue !== '' && priorityValue !== '') {
+                addTodo(titleValue, descriptionValue, dueDateValue, priorityValue, project);
+            };
+        });
+    };
+
+    createTodoBtn();
 
 };
 
